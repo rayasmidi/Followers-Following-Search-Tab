@@ -4,7 +4,7 @@
 ## Getting Started
 ### Prerequisites
 - [Node.js](https://nodejs.org/en/download/) > 10.16.3
-- Twittet Dev Account
+- Twitter Dev Account
 
 ### Setup
 1. Get source material from this repository
