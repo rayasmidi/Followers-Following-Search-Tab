@@ -17,10 +17,10 @@ function loadIndex(req, res, next){
 
 
 var T = new Twit({
-    consumer_key:         'XfatN7KLwPrMm4vJfBZVadNf8',
-    consumer_secret:      '8G7D8yToXod0iNodhwAR7gAILBRnPT8dzLdm0rtNPTzCiyjNaZ',
-    access_token:         '1285361838482436096-WALXcrSqjbxPscxJVnEx1PStuZyMCL',
-    access_token_secret:  'K5QOk2195RpwSOvOe6tO0j2yhT7N6xRtqXa0Fzoo1ecqw',
+    consumer_key:         '',
+    consumer_secret:      '',
+    access_token:         '',
+    access_token_secret:  '',
   timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
 })
 
