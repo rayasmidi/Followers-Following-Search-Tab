@@ -10,31 +10,40 @@ app.use(express.json());
 
 app.get('/', loadIndex);
 
-function loadIndex(req, res, next){
+function loadIndex(req, res, next) {
     res.render("index");
 }
 
 
 
 var T = new Twit({
-    consumer_key:         '',
-    consumer_secret:      '',
-    access_token:         '',
-    access_token_secret:  '',
-  timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests.
+    consumer_key: 'YAeBig2VwVBWljgfvqVNAEiVv',
+    consumer_secret: 'VN3s6Uo4Gq4vx3p1ydP5YYDRW7TOJKNdeBtRfSxqPyyfLeConT',
+    access_token: '1210451819102535681-GmDIhqt7gcErF26ToNsOVg8ckanMa4',
+    access_token_secret: '1eAlt4BLwviKc8TpIWy1yk258ZaWQzUicF3zDR7NFAC9L',
+    timeout_ms: 60 * 1000, // optional HTTP request timeout to apply to all requests.
 })
 
 arrUser = []
+arrscreen_name = []
+arrprofilepic = []
 
-    T.get('https://api.twitter.com/1.1/followers/ids.json', { screen_name: 'muktamanhas' }, function(err, data, response){
-        arrUser = data['ids'][3]
-        console.log(arrUser)
-        console.log('https://api.twitter.com/1.1/users?id='+ arrUser)
-        T.get('https://api.twitter.com/1.1/users/lookup.json?user_id=1210451819102535681', function(err, data, response){
-            console.log(data)
-        });
-        
-
+T.get('https://api.twitter.com/1.1/followers/ids.json', {
+    screen_name: 'muktamanhas'
+}, function (err, data, response) {
+    arrUser = data['ids'][3]
+    console.log(arrUser)
+    console.log('https://api.twitter.com/1.1/users?id=' + arrUser)
+    T.get('https://api.twitter.com/1.1/followers/list.json?cursor=-1&screen_name=Iyush004&skip_status=true&include_user_entities=false', function (err, data, response) {
+        for (var i = 1; i < 10; i++) {
+            arrscreen_name.push(data.users[i].screen_name);
+            arrprofilepic.push(data.users[i].profile_image_url_https);
+        } //data.users[i].screen_name
+        for (var i = 1; i < 10; i++) {
+            console.log(data.users[i].screen_name);
+            console.log(data.users[i].profile_image_url_https);
+        } //data.users[i].screen_name
+    });
 })
 
 
@@ -69,17 +78,17 @@ arrUser = []
 // function getData(err, data, response){
 //     console.log(data)
 //     console.log(data.users.length)
-    // console.log(data.users)
-    // console.log()
-    // for (let i = 0; i < data.users.length; i++){
-    //     newObj = { screen_name : data.users[i]['screen_name'],
-    //                 profile_image_url : data.users[i]['profile_background_image_url']
-    //             };
-    //     userArr.push(newObj);
-    // }
-    // if(data['next_cursor'] > 0){
-    //     T.get('https://api.twitter.com/1.1/followers/list.json', { screen_name: 'twitter', cursor: data['next_cursor'] }, getData);
-    // }
+// console.log(data.users)
+// console.log()
+// for (let i = 0; i < data.users.length; i++){
+//     newObj = { screen_name : data.users[i]['screen_name'],
+//                 profile_image_url : data.users[i]['profile_background_image_url']
+//             };
+//     userArr.push(newObj);
+// }
+// if(data['next_cursor'] > 0){
+//     T.get('https://api.twitter.com/1.1/followers/list.json', { screen_name: 'twitter', cursor: data['next_cursor'] }, getData);
+// }
 
 // T.get('https://api.twitter.com/1.1/followers/list.json', { screen_name: 'twitter' }, getData)
 
