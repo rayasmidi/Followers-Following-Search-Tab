@@ -1,5 +1,5 @@
-# follower/following search
-#codechella hackathon proj
+# follower/following SearchBar
+#codechella hackathon project
 
 ## Getting Started
 ### Prerequisites
@@ -27,6 +27,7 @@ On machine, open browser to the following:
 - [http://localhost:3000/](http://localhost:3000/)
 
 ### Expected Output
+#### A Page which shows followers/followings of a user and a searchBar at the top. Type the username you wish to find in the follower/following list.
 
 ### Issues
 
